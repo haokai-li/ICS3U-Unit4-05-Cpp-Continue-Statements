@@ -21,7 +21,7 @@ int main() {
     float addNumberFloat;
 
     // input
-    std::cout << "Please enter a positive integer: ";
+    std::cout << "How many numbers are you going to add: ";
     std::cin >> userString;
     std::cout << "" << std::endl;
 
@@ -31,25 +31,33 @@ int main() {
         userNumberInt = std::stoi(userString);
         if (userNumberFloat == userNumberInt) {
             while (loopNumber < userNumberInt) {
+                // input
+                std::cout << "Enter the number to add: ";
+                std::cin >> addString;
+                // process
                 try {
                     addNumberFloat = std::stof(addString);
                     addNumberInt = std::stoi(addString);
                     if (addNumberFloat == addNumberInt) {
+                        loopNumber = loopNumber + 1;
                         if (addNumberInt < 0) {
                             continue;
                         }
                         answerNumber = answerNumber + addNumberInt;
-                        loopNumber = loopNumber + 1;
                     } else {
                         // output
                         std::cout << "You didn't enter an integer."
                         << std::endl;
                     }
+                    // output
                 } catch (std::invalid_argument) {
                     // output
                     std::cout << "You didn't enter an integer." << std::endl;
                 }
             }
+            // output
+            std::cout << "Sum of just the positive numbers is = "
+            << answerNumber << std::endl;
         } else {
             // output
             std::cout << "You didn't enter an integer." << std::endl;
